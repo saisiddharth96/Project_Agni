@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +38,7 @@ public class MoreUserDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_user_details);
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("UserDetails");
 
         mSaveDetailsButton =(Button) findViewById(R.id.SaveDetailsButton);
         mFirstName = (EditText) findViewById(R.id.FirstName);
@@ -47,12 +49,28 @@ public class MoreUserDetails extends AppCompatActivity {
         mSaveDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseClass();
+                //DatabaseClass();
+                addUser();
             }
         });
 
     }
-    public void DatabaseClass() {
+
+    private void addUser(){
+        String firstName = mFirstName.getText().toString().trim();
+        String lastName = mLastName.getText().toString().trim();
+        String phoneNumber = mPhoneNumber.getText().toString().trim();
+
+        if(!TextUtils.isEmpty(firstName)){
+            String id = mDatabaseReference.push().getKey();
+            UserDetails user = new UserDetails(firstName, lastName, phoneNumber );
+            mDatabaseReference.child(id).setValue(user);
+
+        }
+        startActivity(new Intent(getApplicationContext(),UserProfile.class));
+    }
+
+   /*public void DatabaseClass() {
         final String firstname = mFirstName.getText().toString().trim();
         final String lastname = mLastName.getText().toString().trim();
         final String phonenumber = mPhoneNumber.getText().toString().trim();
@@ -72,18 +90,6 @@ public class MoreUserDetails extends AppCompatActivity {
         };
         startActivity(new Intent(MoreUserDetails.this,UserProfile.class));
     }
+*/
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if(mAuthStateListener!=null){
-            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
-        }
-
-    }
 }

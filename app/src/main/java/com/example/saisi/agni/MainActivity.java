@@ -119,7 +119,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(mFirebaseAuth.getCurrentUser()!=null){
+            startActivity(new Intent(getApplicationContext(),UserProfile.class));
+        }
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mAuthStateListener!=null){
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        }
+
+    }
 }
 
 
