@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "878330113482",
+    "firebase_url": "https://agni-7603c.firebaseio.com",
+    "project_id": "agni-7603c",
+    "storage_bucket": "agni-7603c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878330113482:android:2fd3686f4ca47eaa",
+        "android_client_info": {
+          "package_name": "com.example.saisi.agni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878330113482-lrdc2hsomsinq6mef9usc3rmsrqed5ip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.saisi.agni",
+            "certificate_hash": "c738fe1faa20d3009460d1c932b99320a8ff3375"
+          }
+        },
+        {
+          "client_id": "878330113482-9d57ofnts7n5urfo9tt9a2jormierql2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZWSQe4AYKftbDgRaodkH3I1_GXEJCqSs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878330113482-9d57ofnts7n5urfo9tt9a2jormierql2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

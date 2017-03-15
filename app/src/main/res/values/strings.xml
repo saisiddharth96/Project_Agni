@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Agni</string>
+    <string name="title_activity_training_center_login">TrainingCenterLogin</string>
+    <string name="title_activity_more_user_details">MoreUserDetails</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
