@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.support.v7.view.menu.ShowableListMenu;
 import android.support.v7.widget.ButtonBarLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.authentication.Constants;
+import com.firebase.client.core.Tag;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,13 +38,16 @@ public class MainActivity extends AppCompatActivity {
     private Button mTrainingCenterLogin;
     private ProgressBar mProgressBar;
 
+
     //FireBase instance variables
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private Firebase mFirebase;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private static final String TAG = "GoogleActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
         mPassword = (EditText)findViewById(R.id.password);
 
 
+
         mFirebaseAuth = FirebaseAuth.getInstance();
+
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
 
         mTrainingCenterLogin.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +87,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
             }
         });
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // [START_EXCLUDE]
+
+                // [END_EXCLUDE]
+            }
+        };
     }
 
     public void registerUser(){
@@ -109,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                       startActivity(new Intent(MainActivity.this,MoreUserDetails.class));
                        finish();
+
                    }
                    else
                    {
@@ -122,8 +147,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         if(mFirebaseAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),UserProfile.class));
+            startActivity(new Intent(MainActivity.this,UserProfile.class));
         }
 
     }
@@ -131,9 +157,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(mAuthStateListener!=null){
-            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
-        }
 
     }
 }

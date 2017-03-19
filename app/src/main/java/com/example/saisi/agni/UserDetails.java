@@ -8,11 +8,12 @@ public class UserDetails {
     private String FirstName;
     private String LastName;
     private String PhoneNumber;
-
-    public UserDetails(String firstName, String lastName, String phoneNumber) {
+    private String UID;
+    public UserDetails(String firstName, String lastName, String phoneNumber, String UID) {
         this.FirstName = firstName;
         this.LastName = lastName;
         this.PhoneNumber = phoneNumber;
+        this.UID = UID;
     }
 
     public String getFirstName() {
@@ -25,5 +26,9 @@ public class UserDetails {
 
     public String getPhoneNumber() {
         return PhoneNumber;
+    }
+
+    public String getUID() {
+        return UID;
     }
 }

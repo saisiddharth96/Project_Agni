@@ -8,17 +8,28 @@
     tools:context="com.example.saisi.agni.MainActivity"
     android:orientation="vertical">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="30sp">
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8sp"
-        android:layout_marginLeft="60sp"
-        android:layout_marginTop="30sp"
         android:text="Welcome to Agni"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:layout_marginLeft="60sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="user's UID"
+        android:textSize="15sp"
+        android:id="@+id/UidText"
+        android:layout_marginLeft="150sp"/>
+</LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -76,17 +87,27 @@
         android:layout_marginRight="0sp"
         android:orientation="vertical"
         android:paddingBottom="20sp"
-        android:paddingTop="40sp">
+        android:paddingTop="0sp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <Button
             android:id="@+id/SignUpButton"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="171sp"
             android:layout_height="45sp"
             android:background="@color/Orange"
             android:text="SignUp"
             android:textAlignment="center"
             android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            <com.google.android.gms.common.SignInButton
+                android:layout_width="171sp"
+                android:layout_height="47sp"
+                android:id="@+id/GoogleSignInButton"></com.google.android.gms.common.SignInButton>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView13"

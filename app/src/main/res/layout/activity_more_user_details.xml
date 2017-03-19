@@ -25,8 +25,15 @@
         android:layout_centerHorizontal="true"
         android:text="Please Enter The Below details"
         android:textAlignment="center"
-        android:textSize="25sp"
-           />
+        android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="user's UID"
+            android:textSize="15sp"
+            android:id="@+id/UidText"
+            android:layout_marginLeft="150sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

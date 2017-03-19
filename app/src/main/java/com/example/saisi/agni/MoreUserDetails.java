@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,7 @@ public class MoreUserDetails extends AppCompatActivity {
     private EditText mFirstName;
     private EditText mLastName;
     private EditText mPhoneNumber;
+    private TextView mUidText;
 
     private DatabaseReference mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -44,13 +46,16 @@ public class MoreUserDetails extends AppCompatActivity {
         mFirstName = (EditText) findViewById(R.id.FirstName);
         mLastName = (EditText) findViewById(R.id.LastName);
         mPhoneNumber = (EditText) findViewById(R.id.PhoneNumber);
-
+        mUidText = (TextView) findViewById(R.id.UidText);
 
         mSaveDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //DatabaseClass();
                 addUser();
+                String UserId = mFirebaseAuth.getInstance().getCurrentUser().getUid();
+                mUidText.setText(UserId);
+
             }
         });
 
@@ -60,10 +65,11 @@ public class MoreUserDetails extends AppCompatActivity {
         String firstName = mFirstName.getText().toString().trim();
         String lastName = mLastName.getText().toString().trim();
         String phoneNumber = mPhoneNumber.getText().toString().trim();
+        String UID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
 
         if(!TextUtils.isEmpty(firstName)){
             String id = mDatabaseReference.push().getKey();
-            UserDetails user = new UserDetails(firstName, lastName, phoneNumber );
+            UserDetails user = new UserDetails(firstName, lastName, phoneNumber, UID );
             mDatabaseReference.child(id).setValue(user);
 
         }
