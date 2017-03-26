@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,UserProfile.class));
-            //LoginCode();
+            //startActivity(new Intent(LoginActivity.this,UserProfile.class));
+            LoginCode();
             }
         });
 
@@ -58,17 +58,20 @@ public class LoginActivity extends AppCompatActivity {
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(LoginActivity.this, "Email id cannot be empty!!", Toast.LENGTH_SHORT).show();
+            return;
         }
         if(TextUtils.isEmpty(password)){
             Toast.makeText(LoginActivity.this, "Password cannot be empty!!", Toast.LENGTH_SHORT).show();
+            return;
         }
         mFirebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                    if(task.isSuccessful()){
-                       startActivity(new Intent(LoginActivity.this,UserProfile.class));
                        finish();
+                       startActivity(new Intent(LoginActivity.this,UserProfile.class));
+
                    }
                    else{
                        Toast.makeText(LoginActivity.this,"Login failed please try again",Toast.LENGTH_SHORT).show();

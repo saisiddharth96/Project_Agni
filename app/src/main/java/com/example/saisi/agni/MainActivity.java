@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerUser();
+                //startActivity(new Intent(MainActivity.this,MoreUserDetails.class));
             }
         });
 
@@ -99,9 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // [START_EXCLUDE]
 
-                // [END_EXCLUDE]
             }
         };
     }
@@ -151,13 +150,16 @@ public class MainActivity extends AppCompatActivity {
       //  if(mFirebaseAuth.getCurrentUser()!=null){
         //    startActivity(new Intent(MainActivity.this,UserProfile.class));
         //}
+        mFirebaseAuth.addAuthStateListener(mAuthListener);
 
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
+        if (mAuthListener != null) {
+        mFirebaseAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }
 

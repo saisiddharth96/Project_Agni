@@ -8,6 +8,10 @@ public class CourseDetails {
     private String courseName;
     private String courseDetails;
 
+    public CourseDetails(){
+
+    }
+
     public CourseDetails(String courseName, String courseDetails) {
         this.courseName = courseName;
         this.courseDetails = courseDetails;
@@ -21,4 +25,11 @@ public class CourseDetails {
         return courseDetails;
     }
 
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void setCourseDetails(String courseDetails) {
+        this.courseDetails = courseDetails;
+    }
 }

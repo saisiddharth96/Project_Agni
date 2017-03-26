@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60sp"
-        android:text="Welcome to Agni"
+        android:text="Sign Up with Agni"
         android:textColor="#000"
         android:textSize="30sp" />
 

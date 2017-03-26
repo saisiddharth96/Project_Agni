@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +26,11 @@ public class TrainingCenterLogin extends AppCompatActivity {
     EditText mCenterPassword;
     Button mCenterLoginButton;
     FirebaseAuth mFirebaseAuthentication;
-    //FirebaseAuth.AuthStateListener mAuthStateListener;
+
+
+    private FirebaseAuth mFirebaseAuth;
+    private Firebase mFirebase;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,10 @@ public class TrainingCenterLogin extends AppCompatActivity {
 
        mFirebaseAuthentication = FirebaseAuth.getInstance();
         FirebaseUser user = mFirebaseAuthentication.getCurrentUser();
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser CenterUser = mFirebaseAuth.getCurrentUser();
+
 
         mCenterUserName = (EditText) findViewById(R.id.CenterUserName);
         mCenterPassword = (EditText) findViewById(R.id.CenterPassword);
@@ -42,8 +51,8 @@ public class TrainingCenterLogin extends AppCompatActivity {
         mCenterLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CenterLogin();
-                startActivity(new Intent(TrainingCenterLogin.this,TrainingCenterProfile.class));
+                CenterLogin();
+                //startActivity(new Intent(TrainingCenterLogin.this,TrainingCenterProfile.class));
             }
         });
     }
@@ -84,7 +93,27 @@ public class TrainingCenterLogin extends AppCompatActivity {
                         }
                     }
                 });
+
     }
+
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+
+        //  if(mFirebaseAuth.getCurrentUser()!=null){
+        //    startActivity(new Intent(MainActivity.this,UserProfile.class));
+        //}
+        mFirebaseAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+    */
 
 }
 

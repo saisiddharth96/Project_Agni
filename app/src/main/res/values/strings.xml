@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">Agni</string>
-    <string name="title_activity_training_center_login">TrainingCenterLogin</string>
-    <string name="title_activity_more_user_details">MoreUserDetails</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_training_center_login"></string>
+    <string name="title_activity_more_user_details"></string>
+    <string name="title_activity_login"></string>
+    <string name="title_activity_user_profile"></string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_training_center_profile">TrainingCenterProfile</string>
+    <string name="title_activity_training_center_profile"></string>
     <string name="title_activity_splash_screen">Agni</string>
+    <string name="title_activity_training_center_nav_profile"></string>
 
 </resources>

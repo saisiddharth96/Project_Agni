@@ -8,8 +8,10 @@
 
 
 
-    <include layout="@layout/content_splash_screen" />
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_splash_screen" />
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/Logout"
+            android:icon="@drawable/logout_rounded"
+            android:title="Log out" />
+        <item
+            android:id="@+id/PreviousPosts"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Previous Posts" />
+
+</menu>

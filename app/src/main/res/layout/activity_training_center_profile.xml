@@ -7,22 +7,17 @@
     android:layout_height="match_parent"
     android:background="@color/MainColourTeal">
 
-    <LinearLayout
+    <include
+        layout="@layout/app_bar_training_center_profile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <include layout="@layout/app_bar_user_profile"/>
-        <include layout = "@layout/content_user_profile"/>
-    </LinearLayout>
-
+        android:layout_height="wrap_content" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header_user_profile"
-        app:menu="@menu/activity_user_profile_drawer" />
+        app:headerLayout="@layout/nav_header_training_center_profile"
+        app:menu="@menu/activity_training_center_profile_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

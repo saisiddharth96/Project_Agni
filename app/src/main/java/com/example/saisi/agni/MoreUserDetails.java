@@ -50,19 +50,14 @@ public class MoreUserDetails extends AppCompatActivity {
         mFirstName = (EditText) findViewById(R.id.FirstName);
         mLastName = (EditText) findViewById(R.id.LastName);
         mPhoneNumber = (EditText) findViewById(R.id.PhoneNumber);
-        mUidText = (TextView) findViewById(R.id.UidText);
+
 
         mSaveDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //DatabaseClass();
-                addUser();
-                //String UserId = mFirebaseAuth.getInstance().getCurrentUser().getUid();
-                //mUidText.setText(UserId);
-
-
-
-
+                //addUser();
+                startActivity(new Intent(getApplicationContext(),UserProfile.class));
             }
         });
 

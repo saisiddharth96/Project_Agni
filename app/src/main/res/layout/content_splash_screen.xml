@@ -38,8 +38,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/fire"
-        tools:layout_editor_absoluteY="133s
-        p"
+        tools:layout_editor_absoluteY="133sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -57,5 +56,14 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" />
 
 </RelativeLayout>
