@@ -45,7 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            LoginCode();
+                startActivity(new Intent(LoginActivity.this,UserProfile.class));
+            //LoginCode();
             }
         });
 

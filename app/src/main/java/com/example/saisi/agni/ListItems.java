@@ -13,5 +13,11 @@ public class ListItems {
         this.CenterLocation = centerLocation;
     }
 
+    public String getUserName() {
+        return UserName;
+    }
 
+    public String getCenterLocation() {
+        return CenterLocation;
+    }
 }

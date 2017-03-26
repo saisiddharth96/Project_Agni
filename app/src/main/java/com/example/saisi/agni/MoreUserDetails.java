@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,12 +36,15 @@ public class MoreUserDetails extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
+    private static final String TAG = "MoreUserDetails";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_user_details);
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("UserDetails");
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        Log.i(TAG, mDatabaseReference.toString());
 
         mSaveDetailsButton =(Button) findViewById(R.id.SaveDetailsButton);
         mFirstName = (EditText) findViewById(R.id.FirstName);
@@ -53,8 +57,11 @@ public class MoreUserDetails extends AppCompatActivity {
             public void onClick(View v) {
                 //DatabaseClass();
                 addUser();
-                String UserId = mFirebaseAuth.getInstance().getCurrentUser().getUid();
-                mUidText.setText(UserId);
+                //String UserId = mFirebaseAuth.getInstance().getCurrentUser().getUid();
+                //mUidText.setText(UserId);
+
+
+
 
             }
         });
@@ -70,7 +77,8 @@ public class MoreUserDetails extends AppCompatActivity {
         if(!TextUtils.isEmpty(firstName)){
             String id = mDatabaseReference.push().getKey();
             UserDetails user = new UserDetails(firstName, lastName, phoneNumber, UID );
-            mDatabaseReference.child(id).setValue(user);
+            mDatabaseReference.child("UserDetails").child(id).setValue(user);
+           //mUidText.setText(mDatabaseReference.getRef(UID));
 
         }
         startActivity(new Intent(getApplicationContext(),UserProfile.class));

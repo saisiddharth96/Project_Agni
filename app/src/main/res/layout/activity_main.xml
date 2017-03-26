@@ -13,22 +13,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginTop="30sp">
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60sp"
         android:text="Welcome to Agni"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="30sp"
-        android:layout_marginLeft="60sp"/>
+        android:textColor="#000"
+        android:textSize="30sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="user's UID"
-        android:textSize="15sp"
-        android:id="@+id/UidText"
-        android:layout_marginLeft="150sp"/>
 </LinearLayout>
 
     <LinearLayout
@@ -53,7 +47,9 @@
             android:layout_width="350sp"
             android:layout_height="40sp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:hint="Enter Email Id"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
 
         <TextView
             android:id="@+id/textView10"
@@ -67,7 +63,9 @@
             android:layout_width="350sp"
             android:layout_height="40sp"
             android:ems="10"
+            android:hint="Enter Password"
             android:inputType="textPassword"
+            android:singleLine="true"
             android:textColor="@color/common_google_signin_btn_text_dark_default"
             tools:layout_editor_absoluteX="17sp"
             tools:layout_editor_absoluteY="130sp" />

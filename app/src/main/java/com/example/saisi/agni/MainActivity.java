@@ -148,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if(mFirebaseAuth.getCurrentUser()!=null){
-            startActivity(new Intent(MainActivity.this,UserProfile.class));
-        }
+      //  if(mFirebaseAuth.getCurrentUser()!=null){
+        //    startActivity(new Intent(MainActivity.this,UserProfile.class));
+        //}
 
     }
 
