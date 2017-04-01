@@ -51,8 +51,8 @@ public class TrainingCenterLogin extends AppCompatActivity {
         mCenterLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CenterLogin();
-                //startActivity(new Intent(TrainingCenterLogin.this,TrainingCenterProfile.class));
+               // CenterLogin();
+                startActivity(new Intent(TrainingCenterLogin.this,TrainingCenterProfile.class));
             }
         });
     }

@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerUser();
-                //startActivity(new Intent(MainActivity.this,MoreUserDetails.class));
+                //registerUser();
+                startActivity(new Intent(MainActivity.this,MoreUserDetails.class));
             }
         });
 

@@ -7,14 +7,16 @@ package com.example.saisi.agni;
 public class CourseDetails {
     private String courseName;
     private String courseDetails;
+   //private String url;
 
     public CourseDetails(){
 
     }
 
-    public CourseDetails(String courseName, String courseDetails) {
+    public CourseDetails(String courseName, String courseDetails /*,String url*/) {
         this.courseName = courseName;
         this.courseDetails = courseDetails;
+        //this.url=url;
     }
 
     public String getCourseName() {
@@ -24,6 +26,7 @@ public class CourseDetails {
     public String getCourseDetails() {
         return courseDetails;
     }
+
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;

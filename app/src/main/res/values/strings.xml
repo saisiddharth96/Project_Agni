@@ -12,5 +12,11 @@
     <string name="title_activity_training_center_profile"></string>
     <string name="title_activity_splash_screen">Agni</string>
     <string name="title_activity_training_center_nav_profile"></string>
+    <array name="Course_List">
+        <item name="Agriculture"> Agriculture</item>
+        <item name="Banking">Banking</item>
+        <item name="Constructions">Constructions</item>
+        <item name="Skill Development">Skill Development</item>
+    </array>
 
 </resources>

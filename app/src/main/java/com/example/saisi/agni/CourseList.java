@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +37,16 @@ public class CourseList extends ArrayAdapter<CourseDetails> {
 
         LayoutInflater inflater = Context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.previous_posts_list_fragment,null,true);
+        View listViewItem1 = inflater.inflate(R.layout.previous_posts,null,true);
 
-        TextView courseNameText = (TextView)listViewItem.findViewById(R.id.CourseNameList);
-        TextView courseDetailsText = (TextView)listViewItem.findViewById(R.id.CourseDetailsList);
+          TextView courseNameText = (TextView)listViewItem.findViewById(R.id.CourseNameUsers);
+        //TextView courseDetailsText = (TextView)listViewItem.findViewById(R.id.CourseDetailsList);
+        ImageView courseImage = (ImageView)listViewItem.findViewById(R.id.imageUpload);
 
-        CourseDetails detailss = details.get(position);
-        courseNameText.setText(detailss.getCourseName());
-        courseDetailsText.setText(detailss.getCourseDetails());
-        return listViewItem;
+          CourseDetails detailss = details.get(position);
+          courseNameText.setText(detailss.getCourseName());
+        //courseDetailsText.setText(detailss.getCourseDetails());
+         Glide.with(Context).load(courseImage).into(courseImage);
+        return listViewItem1;
     }
 }
