@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.saisi.agni.TrainingCenterSignUp"
+    android:layout_marginTop="5sp"
+    android:layout_marginLeft="20sp"
+    android:layout_marginRight="20sp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Training Center Signup"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        android:textColor="#000"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10sp"/>
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:text="Email ID"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/CenterEmailId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9sp"
+        android:hint="Email Id"
+        android:singleLine="true"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="18sp"
+        android:layout_marginTop="6sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/CenterPasswordSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9sp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:textSize="18sp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textColor="#FFFFFF"
+        android:background="#4DB6AC"
+        android:textSize="18sp"
+        android:layout_marginTop="20sp"
+        android:id="@+id/CenterSignUpButton"/>
+</LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.saisi.agni.LoginActivity"
-    android:background="@color/MainColourTeal">
+    >
 
 
     <TextView
@@ -28,20 +28,21 @@
         android:layout_marginTop="150sp"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1sp"
-        android:layout_marginTop="8sp"
-        android:text="Email ID"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_marginTop="15sp"
+            android:text="Email ID"
+            android:textColor="#000"
+            android:textSize="15sp"/>
 
         <EditText
             android:id="@+id/EmailId"
             android:layout_width="350sp"
             android:layout_height="40sp"
-            android:ems="10"
+            android:textSize="20sp"
             android:hint="Enter Email ID"
             android:inputType="textEmailAddress"
             android:singleLine="true" />
@@ -51,19 +52,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:textColor="#000"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="15sp"
+        android:textSize="15sp"/>
 
         <EditText
             android:id="@+id/password"
             android:layout_width="350sp"
             android:layout_height="40sp"
-            android:ems="10"
+            android:textSize="20sp"
             android:hint="Enter Password"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textColor="@color/common_google_signin_btn_text_dark_default"
-            tools:layout_editor_absoluteX="17sp"
-            tools:layout_editor_absoluteY="130sp" />
+            android:textColor="#000"/>
 
         <Button
             android:layout_width="match_parent"
@@ -71,7 +73,7 @@
             android:id="@+id/LoginButton"
             android:textAlignment="center"
             android:text="Login"
-            android:background="@color/Orange"
+            android:background="#4DB6AC"
             android:layout_marginTop="40sp"/>
     </LinearLayout>
 

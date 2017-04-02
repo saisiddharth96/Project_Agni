@@ -44,6 +44,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class TrainingCenterProfile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -79,8 +80,7 @@ public class TrainingCenterProfile extends AppCompatActivity
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        mStorageRef = FirebaseStorage.getInstance().getReference("CourseImages/");
-
+        mStorageRef = FirebaseStorage.getInstance().getReference(Constants.STORAGE_PATH_UPLOADS);
 
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
 
@@ -148,7 +148,7 @@ public class TrainingCenterProfile extends AppCompatActivity
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     //mUserNameText.setText(mFirebaseAuth.getCurrentUser().getEmail());
                     //mEmailIDText.setText(mFirebaseAuth.getCurrentUser().getDisplayName());
-                    mUserNameText.setText();
+                    //mUserNameText.setText();
 
                 } else {
                     // User is signed out
@@ -164,11 +164,14 @@ public class TrainingCenterProfile extends AppCompatActivity
     private void sendNewCourseDetails() {
         String cName = mCourseName.getText().toString().trim();
         String cDetails = mCourseDetails.getText().toString().trim();
+        //String cUrl = FirebaseStorage.getInstance().toString();
+
+
 
 
         if(!TextUtils.isEmpty(cName)&& !TextUtils.isEmpty(cDetails) && mImageView.getDrawable() != null){
             String id = mDatabaseReference.push().getKey();
-            CourseDetails newdetails = new CourseDetails(cName,cDetails);
+            CourseDetails newdetails = new CourseDetails(cName,cDetails,null);
             mDatabaseReference.child("Course Details").child(id).setValue(newdetails);
             Toast.makeText(TrainingCenterProfile.this,"Course Details Updated",Toast.LENGTH_LONG).show();
             uploadFile();
@@ -220,16 +223,13 @@ public class TrainingCenterProfile extends AppCompatActivity
         return true;
     }
 
-    public String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
+
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 mImageView.setImageBitmap(bitmap);
@@ -240,15 +240,30 @@ public class TrainingCenterProfile extends AppCompatActivity
     }
 
     private void uploadFile() {
-        //checking if file is available
+
         if (filePath != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading");
-            progressDialog.show();
 
-            mStorageRef.child(Constants.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(filePath));
+            StorageReference photoRef = mStorageRef.child(filePath.getLastPathSegment());
 
-            mStorageRef.child("uploads");
+            photoRef.putFile(filePath).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Uri downloadUri = taskSnapshot.getDownloadUrl();
+                    CourseDetails newdetails = new CourseDetails(null,null,taskSnapshot.getDownloadUrl().toString());
+                    String uploadId = mDatabaseReference.push().getKey();
+                    mDatabaseReference.child("Center Images").child(uploadId).setValue(newdetails);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+
+                    Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+            //mStorageRef.child(Constants.STORAGE_PATH_UPLOADS /*+ System.currentTimeMillis() + "." + getFileExtension(filePath)*/);
+
+           /* mStorageRef.child("uploads");
                     mStorageRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -277,21 +292,31 @@ public class TrainingCenterProfile extends AppCompatActivity
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             //displaying the upload progress
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                            double progress = (100.0 * (taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
 
                         }
                     });
         } else {
             //display an error if no file is selected
+        }*/
+
         }
     }
 
 
     private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        try {
+            startActivityForResult(
+                    Intent.createChooser(intent, "Select a File to Upload"),
+                    PICK_IMAGE_REQUEST);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "Please install a File Manager.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }

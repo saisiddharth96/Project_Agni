@@ -57,26 +57,27 @@ public class MoreUserDetails extends AppCompatActivity {
             public void onClick(View v) {
                 //DatabaseClass();
                 //addUser();
+                startActivity(new Intent(getApplicationContext(),UserProfile.class));String firstName = mFirstName.getText().toString().trim();
+                String lastName = mLastName.getText().toString().trim();
+                String phoneNumber = mPhoneNumber.getText().toString().trim();
+                String UID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                if(!TextUtils.isEmpty(firstName)){
+                    String id = mDatabaseReference.push().getKey();
+                    UserDetails user = new UserDetails(firstName, lastName, phoneNumber, UID );
+                    mDatabaseReference.child("UserDetails").child(id).setValue(user);
+                    //mUidText.setText(mDatabaseReference.getRef(UID));
+
+                }
                 startActivity(new Intent(getApplicationContext(),UserProfile.class));
+                finish();
             }
         });
 
     }
 
     private void addUser(){
-        String firstName = mFirstName.getText().toString().trim();
-        String lastName = mLastName.getText().toString().trim();
-        String phoneNumber = mPhoneNumber.getText().toString().trim();
-        String UID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        if(!TextUtils.isEmpty(firstName)){
-            String id = mDatabaseReference.push().getKey();
-            UserDetails user = new UserDetails(firstName, lastName, phoneNumber, UID );
-            mDatabaseReference.child("UserDetails").child(id).setValue(user);
-           //mUidText.setText(mDatabaseReference.getRef(UID));
-
-        }
-        startActivity(new Intent(getApplicationContext(),UserProfile.class));
     }
 
    /*public void DatabaseClass() {

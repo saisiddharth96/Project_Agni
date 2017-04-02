@@ -26,6 +26,7 @@ public class TrainingCenterLogin extends AppCompatActivity {
     EditText mCenterPassword;
     Button mCenterLoginButton;
     FirebaseAuth mFirebaseAuthentication;
+    Button mCenterSignupButton;
 
 
     private FirebaseAuth mFirebaseAuth;
@@ -47,7 +48,14 @@ public class TrainingCenterLogin extends AppCompatActivity {
         mCenterUserName = (EditText) findViewById(R.id.CenterUserName);
         mCenterPassword = (EditText) findViewById(R.id.CenterPassword);
         mCenterLoginButton = (Button)findViewById(R.id.CenterLoginButton);
+        mCenterSignupButton = (Button)findViewById(R.id.CenterSignUpButton);
 
+        mCenterSignupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TrainingCenterLogin.this,TrainingCenterSignUp.class));
+            }
+        });
         mCenterLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,20 +84,17 @@ public class TrainingCenterLogin extends AppCompatActivity {
             return;
         }
 
-        mFirebaseAuthentication.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        mFirebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(TrainingCenterLogin.this,"User Registeration Successful",Toast.LENGTH_SHORT).show();
-                        if (task.isSuccessful()){
+                        if(task.isSuccessful()){
                             finish();
-                            startActivity(new Intent(TrainingCenterLogin.this,TrainingCenterProfile.class));
-
+                            startActivity(new Intent(TrainingCenterLogin.this,UserProfile.class));
 
                         }
-                        else
-                        {
-                            Toast.makeText(TrainingCenterLogin.this, "User registeration failed please try again",Toast.LENGTH_SHORT );
+                        else{
+                            Toast.makeText(TrainingCenterLogin.this,"Login failed please try again",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

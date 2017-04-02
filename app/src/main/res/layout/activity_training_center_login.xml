@@ -5,20 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.saisi.agni.TrainingCenterLogin"
-    android:orientation="vertical"
-    android:background="@color/MainColourTeal">
-
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40sp">
+        android:layout_marginTop="30sp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
-            android:text="TRAINING CENTER LOGIN"
+            android:layout_marginTop="30sp"
+            android:text="Training Center Login"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="30sp" />
@@ -27,14 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15sp"
-        android:layout_marginTop="45sp"
+        android:layout_marginTop="55sp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="UserName"
-            android:textColor="@android:color/white"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <EditText
@@ -43,21 +41,21 @@
             android:layout_height="wrap_content"
             android:hint="Enter Email ID"
             android:inputType="textEmailAddress|textWebEmailAddress"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="20sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15sp"
-
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
-            android:textColor="@android:color/white"
+            android:textColor="#000"
             android:textSize="15sp" />
 
         <EditText
@@ -66,18 +64,42 @@
             android:layout_height="wrap_content"
             android:hint="Enter Password"
             android:inputType="textPassword"
+            android:textSize="20sp"
             android:singleLine="true" />
     </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Orange"
-        android:text="LOGIN"
+        android:orientation="vertical">
+    <Button
+        android:layout_width="200sp"
+        android:layout_height="match_parent"
+        android:background="#4DB6AC"
+        android:text="Login"
         android:id="@+id/CenterLoginButton"
         android:textSize="17sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#fff"
         android:layout_margin="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dont have an account? Signup here"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25sp"/>
+        <Button
+            android:layout_width="200sp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="#4DB6AC"
+            android:text="Sign Up"
+            android:id="@+id/CenterSignUpButton"
+            android:textSize="17sp"
+            android:textColor="#fff"
+            android:layout_margin="15sp"/>
+
+
+        </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>

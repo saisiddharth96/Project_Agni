@@ -7,7 +7,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.saisi.agni.TrainingCenterProfile"
     tools:showIn="@layout/app_bar_training_center_profile"
-    android:background="@color/MainColourTeal"
     android:orientation="vertical">
 
 
@@ -35,14 +34,12 @@
             android:layout_height="wrap_content"
             android:text="Course Name"
             android:textSize="18sp"
-            android:textColor="#fff"
-            android:textStyle="bold"/>
+            android:textColor="#000"/>
 
             <Spinner
                 android:id="@+id/CourseNameSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:background="#00BFA5"
                 android:entries="@array/Course_List" />
 
             <EditText
@@ -61,8 +58,7 @@
                     android:layout_height="wrap_content"
                     android:text="Course Details"
                     android:textSize="18sp"
-                    android:textColor="#fff"
-                    android:textStyle="bold"/>
+                    android:textColor="#000"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -70,9 +66,6 @@
                     android:id="@+id/courseDetails"
                     android:textSize="20sp"/>
             </LinearLayout>
-
-
-
         </LinearLayout>
     </LinearLayout>
 <LinearLayout
@@ -82,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="180sp"
         android:id="@+id/imageUpload"
-        android:layout_margin="10sp"/>
+        android:layout_margin="10sp" />
 </LinearLayout>
 
     <LinearLayout
@@ -96,8 +89,9 @@
             android:layout_width="130sp"
             android:layout_height="match_parent"
             android:layout_marginRight="35sp"
-            android:background="@color/Orange"
+            android:background="#4DB6AC"
             android:text="Select Image"
+            android:textColor="#fff"
             android:id="@+id/selectImagebutton"/>
 
 
@@ -105,9 +99,9 @@
             android:id="@+id/sendInfoButton"
             android:layout_width="160sp"
             android:layout_height="match_parent"
-            android:background="@color/Orange"
+            android:background="#4DB6AC"
             android:text="Send Info To Users"
             android:textAlignment="center"
-            android:textColor="#000" />
+            android:textColor="#fff" />
     </LinearLayout>
 </LinearLayout>

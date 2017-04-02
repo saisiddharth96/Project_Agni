@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.saisi.agni.MoreUserDetails"
-    android:weightSum="1"
-    android:background="@color/MainColourTeal">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +24,8 @@
         android:layout_centerHorizontal="true"
         android:text="Please Enter The Below details"
         android:textAlignment="center"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+            android:textColor="#000"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,27 +36,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="First Name"
-                android:textColor="#ffff"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textColor="#000"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/FirstName" />
+                android:id="@+id/FirstName"
+                android:textSize="20sp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Last Name"
-                android:textColor="#ffff"
+                android:textColor="#000"
                 android:textSize="14sp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LastName" />
+                android:id="@+id/LastName"
+                android:textSize="20sp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
-                android:textColor="#ffff"/>
+                android:textColor="#000"/>
 
             <EditText
                 android:id="@+id/PhoneNumber"
@@ -64,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter 10 Digit mobile number"
                 android:inputType="number"
-                android:maxLength="10" />
+                android:maxLength="10"
+                android:textSize="20sp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,14 +75,12 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/Orange"
+                    android:background="#4DB6AC"
                     android:text="Save Details and Proceed"
                     android:textSize="15sp"
                     android:textAllCaps="false"
                     android:id="@+id/SaveDetailsButton"/>
-
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
